@@ -316,6 +316,8 @@
     <button class="tab" onclick="showTab('saturday', this)">Saturday</button>
     <button class="tab" onclick="showTab('sunday', this)">Sunday</button>
     <button class="tab" onclick="showTab('routines', this)">Routines</button>
+    <button class="tab" onclick="showTab('track', this)">Track</button>
+
   </div>
 
   <div class="legend">
@@ -492,11 +494,28 @@
 
     </div>
   </div>
+
+    <!-- Track -->
+  <div id="tab-track" class="schedule-block hidden">
+    <div class="section-label">Habits</div>
+    <div class="row"><div class="time">09:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Brush · Face wash · SPF 30 · B12 · Nasoclear (1)</div></div>
+    <div class="row"><div class="time">09:30 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">Study — 4 hours · Arm squeezer at desk</div></div>
+    <div class="row"><div class="time">01:30 PM</div><div class="dot-col"><div class="dot dot-social"></div></div><div class="entry">Hang out with friends</div></div>
+    <div class="row"><div class="time">09:00 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Dinner</div></div>
+    <div class="row"><div class="time">09:45 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Walk · Nasoclear (2) · Hair Ras (2)</div></div>
+    <div class="row"><div class="time">10:00 PM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">Study — 2 hours · Arm squeezer at desk</div></div>
+    <div class="row"><div class="time">12:00 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">Varsity</div></div>
+    <div class="row"><div class="time">12:30 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Read a book</div></div>
+    <div class="row"><div class="time">01:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Sunday night routine · Face mask · Derma roll · No Minoxidil · Barrier cream · Nail paint</div></div>
+    <div class="row"><div class="time">01:30 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Sleep</div></div>
+  </div>
 </div>
+
+
 
 <script>
 function showTab(name, el) {
-  ['weekday','saturday','sunday','routines'].forEach(t => {
+  ['weekday','saturday','sunday','routines','track'].forEach(t => {
     document.getElementById('tab-' + t).classList.add('hidden');
   });
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
