@@ -279,6 +279,22 @@
 
   .hidden { display: none; }
 
+  .track-submit {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: var(--text);
+  color: #F7F5F0;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.track-submit:hover {
+  opacity: 0.85;
+}
+
   /* Dot colors */
   .dot-study   { background: var(--study); }
   .dot-health  { background: var(--health); }
@@ -498,18 +514,21 @@
     <!-- Track -->
   <div id="tab-track" class="schedule-block hidden">
     <div class="section-label">Habits</div>
-    <div class="row"><div class="time">09:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry"> Wake at 9:00 AM </div></div>
-    <div class="row"><div class="time">12:00 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Morning Routine </div></div>
-    <div class="row"><div class="time">09:30 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Running + Shower </div></div>
-    <div class="row"><div class="time">01:30 PM</div><div class="dot-col"><div class="dot dot-social"></div></div><div class="entry"> Study 6hr + Grip </div></div>
-    <div class="row"><div class="time">09:00 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry"> Protein + Type/Toast/Bad </div></div>
-    <div class="row"><div class="time">09:45 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry"> Duo Chess </div></div>
-    <div class="row"><div class="time">09:45 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry"> 4 bottle water </div></div>
-    <div class="row"><div class="time">12:00 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> No nail biting </div></div>
-    <div class="row"><div class="time">12:00 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> No eye rubbing </div></div>
-    <div class="row"><div class="time">12:00 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Varsity + Read </div></div>
-    <div class="row"><div class="time">12:00 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Night Routine </div></div>
-    <div class="row"><div class="time">12:30 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry"> Sleep 7+ hours</div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry"> Wake at 9:00 AM </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Morning Routine </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Running + Shower </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-social"></div></div><div class="entry"> Study 6hr + Grip </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry"> Type/Toast/Badminton </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry"> Protein + Duo Chess </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry"> 4 bottle water </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> No nail biting </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> No eye rubbing </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Varsity + Read </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Night Routine </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry"> Sleep 7+ hours</div></div>
+    <div style="margin-top: 20px; text-align: right;">
+      <button class="track-submit" onclick="handleSubmit()">Submit</button>
+    </div>
   </div>
 </div>
 
@@ -523,6 +542,31 @@ function showTab(name, el) {
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.remove('hidden');
   el.classList.add('active');
+}
+function handleSubmit() {
+  const checks = document.querySelectorAll('#tab-track .track-check');
+
+  const habits = [];
+  checks.forEach(c => habits.push(c.checked ? 1 : 0));
+
+  const today = new Date();
+ const formattedDate = today.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'short',
+  weekday: 'short'
+ });
+
+  fetch("https://script.google.com/macros/s/AKfycbwLOtHZJ1hcHXVxDRN4vYw7CmqI8s6Tg8sYWx1t9BV5XtXfrlIODvvD7MO7rdIpiARQ/exec", {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      date: formattedDate,
+      habits: habits
+    })
+  })
+  .then(() => alert("Submitted"))
+  .then(data => alert(data))
+  .catch(err => console.error(err));
 }
 </script>
 </body>
