@@ -556,7 +556,7 @@ function handleSubmit() {
 
   fetch("https://script.google.com/macros/s/AKfycbyE8pQCoatfMrRcANBebJbMoR1cG20zwt3E5JTVm7ddW5bqYdHgVd9sSSnGVTT7SZHI/exec", {
   method: "POST",
-  redirect: "follow",                 
+  mode: "no-cors",                 
   headers: { "Content-Type": "text/plain" },  
   body: JSON.stringify({
     date: formattedDate,
