@@ -530,7 +530,12 @@
     </div>
   </div>
 </div>
+<form id="hiddenForm" method="POST" target="hiddenFrame"
+      action="https://script.google.com/macros/s/AKfycbz4_apbLbDQXv_w8bYTdM3uE9xdWhAPXAwMUW7qD9fCZ5mrhMhlhnqXA6lMbRfdCpsc/exec">
+  <input type="hidden" name="payload" id="payloadInput">
+</form>
 
+<iframe name="hiddenFrame" style="display:none;"></iframe>
 
 
 <script>
@@ -549,25 +554,22 @@ function handleSubmit() {
   checks.forEach(c => habits.push(c.checked ? 1 : 0));
 
   const today = new Date();
- const day = today.getDate();
- const month = today.toLocaleDateString('en-GB', { month: 'short' });
- const weekday = today.toLocaleDateString('en-GB', { weekday: 'short' });
- const formattedDate = `${day} ${month}, ${weekday}`;
+  const day = today.getDate();
+  const month = today.toLocaleDateString('en-GB', { month: 'short' });
+  const weekday = today.toLocaleDateString('en-GB', { weekday: 'short' });
+  const formattedDate = `${day} ${month}, ${weekday}`;
 
-  fetch("https://script.google.com/macros/s/AKfycbxjPgjvkKGJ2pa1DFrKyphmk4GasSs1bQKnsdS8h5Tuq3n4RHthT_LK3Cfat2VvGmyW/exec", {
-  method: "POST",
-  body: JSON.stringify({
+  const payload = {
     date: formattedDate,
     habits: habits
-  })
-})
-.then(res => res.text())
-.then(data => {
-  console.log(data);
+  };
+
+  document.getElementById("payloadInput").value = JSON.stringify(payload);
+  document.getElementById("hiddenForm").submit();
+
   alert("Submitted ✓");
-})
-.catch(err => console.error(err));
 }
+
 
 </script>
 </body>
