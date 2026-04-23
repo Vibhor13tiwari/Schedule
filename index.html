@@ -554,11 +554,8 @@ function handleSubmit() {
  const weekday = today.toLocaleDateString('en-GB', { weekday: 'short' });
  const formattedDate = `${day} ${month}, ${weekday}`;
 
-  fetch("https://script.google.com/macros/s/AKfycbyy6hJKL6j0QvxE1B7SZPmFUpoABMRhJT0cuYsOr6C2zixUWsxAM2loYNE9LOHfNOc/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbxjPgjvkKGJ2pa1DFrKyphmk4GasSs1bQKnsdS8h5Tuq3n4RHthT_LK3Cfat2VvGmyW/exec", {
   method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
   body: JSON.stringify({
     date: formattedDate,
     habits: habits
