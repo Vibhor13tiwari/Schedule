@@ -555,16 +555,17 @@ function handleSubmit() {
  const formattedDate = `${day} ${month}, ${weekday}`;
 
   fetch("https://script.google.com/macros/s/AKfycbwLOtHZJ1hcHXVxDRN4vYw7CmqI8s6Tg8sYWx1t9BV5XtXfrlIODvvD7MO7rdIpiARQ/exec", {
-    method: "POST",
-    mode: "no-cors",
-    body: JSON.stringify({
-      date: formattedDate,
-      habits: habits
-    })
+  method: "POST",
+  redirect: "follow",                 
+  headers: { "Content-Type": "text/plain" },  
+  body: JSON.stringify({
+    date: formattedDate,
+    habits: habits
   })
-  .then(() => alert("Submitted ✓"))
-  .catch(err => console.error(err));
-}
+})
+.then(() => alert("Submitted ✓"))
+.catch(err => console.error(err));
+
 </script>
 </body>
 </html>
