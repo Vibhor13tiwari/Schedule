@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Schedule</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Daily Schedule · Aug 15 Lock-in</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #F7F5F0;
@@ -12,22 +12,21 @@
     --border: #E8E4DC;
     --text: #1A1814;
     --muted: #8C8780;
-    --accent: #2D5016;
-    --accent-light: #EBF2E3;
-    --study: #1B4A7A;
+    --study:  #1B4A7A;
     --study-light: #E8F0F9;
     --social: #5B3DA8;
     --social-light: #EEE9FA;
-    --work: #8B4A00;
+    --work:   #8B4A00;
     --work-light: #FBF0E3;
-    --routine: #8B1A3A;
-    --routine-light: #FAE8EE;
+    --routine:#8B1A3A;
+    --routine-light:#FAE8EE;
     --health: #1A6B3A;
-    --health-light: #E3F5EC;
-    --rest: #4A4540;
+    --health-light:#E3F5EC;
+    --rest:   #4A4540;
     --rest-light: #F0EDEA;
+    --brain:  #7A5C1E;
+    --brain-light: #F5EDD9;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
@@ -35,10 +34,8 @@
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
-    padding: 0;
   }
 
-  /* Header */
   .header {
     background: var(--text);
     color: #F7F5F0;
@@ -49,8 +46,7 @@
   .header::after {
     content: '';
     position: absolute;
-    bottom: -1px;
-    left: 0; right: 0;
+    bottom: -1px; left: 0; right: 0;
     height: 32px;
     background: var(--bg);
     border-radius: 32px 32px 0 0;
@@ -72,11 +68,7 @@
     letter-spacing: -0.02em;
     margin-bottom: 1.2rem;
   }
-  .header-meta {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
+  .header-meta { display: flex; gap: 1rem; flex-wrap: wrap; }
   .meta-pill {
     font-size: 12px;
     padding: 5px 12px;
@@ -86,10 +78,8 @@
     font-weight: 300;
   }
 
-  /* Main layout */
   .main { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; }
 
-  /* Tabs */
   .tabs {
     display: flex;
     gap: 4px;
@@ -114,13 +104,8 @@
     white-space: nowrap;
   }
   .tab:hover { color: var(--text); background: var(--bg); }
-  .tab.active {
-    background: var(--text);
-    color: #F7F5F0;
-    font-weight: 500;
-  }
+  .tab.active { background: var(--text); color: #F7F5F0; font-weight: 500; }
 
-  /* Legend */
   .legend {
     display: flex;
     flex-wrap: wrap;
@@ -129,20 +114,16 @@
     padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--border);
   }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-  .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-study   { background: var(--study); }
+  .dot-health  { background: var(--health); }
+  .dot-routine { background: var(--routine); }
+  .dot-work    { background: var(--work); }
+  .dot-social  { background: var(--social); }
+  .dot-rest    { background: #C0B8B0; }
+  .dot-brain   { background: var(--brain); }
 
-  /* Section label */
   .section-label {
     font-size: 10px;
     font-weight: 500;
@@ -154,18 +135,9 @@
     align-items: center;
     gap: 10px;
   }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-  /* Schedule rows */
-  .schedule-block {
-    display: flex;
-    flex-direction: column;
-  }
+  .schedule-block { display: flex; flex-direction: column; }
   .row {
     display: grid;
     grid-template-columns: 70px 10px 1fr;
@@ -192,7 +164,6 @@
     font-weight: 300;
   }
 
-  /* Badges */
   .badge {
     display: inline-block;
     font-size: 10.5px;
@@ -206,32 +177,14 @@
   .b-study   { background: var(--study-light);   color: var(--study); }
   .b-health  { background: var(--health-light);  color: var(--health); }
   .b-social  { background: var(--social-light);  color: var(--social); }
+  .b-brain   { background: var(--brain-light);   color: var(--brain); }
+  .b-sun     { background: var(--routine-light); color: var(--routine); }
 
-  /* Routines tab */
   .cards-grid { display: flex; flex-direction: column; gap: 1rem; }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .card-header {
-    padding: 1rem 1.25rem 0.75rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .card-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-  .card-subtitle {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 3px;
-    font-weight: 300;
-  }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .card-header { padding: 1rem 1.25rem 0.75rem; border-bottom: 1px solid var(--border); }
+  .card-title { font-family: 'DM Serif Display', serif; font-size: 16px; font-weight: 400; color: var(--text); letter-spacing: -0.01em; }
+  .card-subtitle { font-size: 11px; color: var(--muted); margin-top: 3px; font-weight: 300; }
   .steps { padding: 0.25rem 0; }
   .step {
     display: grid;
@@ -247,68 +200,53 @@
   }
   .step:last-child { border-bottom: none; }
   .step:hover { background: var(--bg); }
-  .step-num {
-    font-size: 11px;
-    color: var(--muted);
-    font-weight: 500;
-    padding-top: 2px;
-    text-align: right;
-  }
+  .step-num { font-size: 11px; color: var(--muted); font-weight: 500; padding-top: 2px; text-align: right; }
 
   .pills-block { padding: 0.75rem 1.25rem; }
   .pill-group { margin-bottom: 0.75rem; }
   .pill-group:last-child { margin-bottom: 0; }
-  .pill-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
-  }
+  .pill-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
   .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
-  .pill {
-    font-size: 12px;
-    padding: 5px 11px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    color: var(--rest);
-    background: var(--bg);
-    font-weight: 400;
+  .pill { font-size: 12px; padding: 5px 11px; border-radius: 20px; border: 1px solid var(--border); color: var(--rest); background: var(--bg); font-weight: 400; }
+
+  .track-submit {
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: none;
+    background: var(--text);
+    color: #F7F5F0;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
   }
+  .track-submit:hover { opacity: 0.85; }
+
+  .countdown-banner {
+    background: var(--text);
+    color: #F7F5F0;
+    border-radius: 14px;
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .countdown-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #9A9690; margin-bottom: 4px; }
+  .countdown-num { font-family: 'DM Serif Display', serif; font-size: 2rem; line-height: 1; letter-spacing: -0.02em; }
+  .countdown-sub { font-size: 12px; color: #9A9690; margin-top: 3px; font-weight: 300; }
+  .countdown-right { font-size: 12px; color: #9A9690; font-style: italic; font-weight: 300; max-width: 240px; text-align: right; }
 
   .hidden { display: none; }
 
-  .track-submit {
-  padding: 10px 18px;
-  border-radius: 10px;
-  border: none;
-  background: var(--text);
-  color: #F7F5F0;
-  font-size: 13px;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.track-submit:hover {
-  opacity: 0.85;
-}
-
-  /* Dot colors */
-  .dot-study   { background: var(--study); }
-  .dot-health  { background: var(--health); }
-  .dot-routine { background: var(--routine); }
-  .dot-work    { background: var(--work); }
-  .dot-social  { background: var(--social); }
-  .dot-rest    { background: #C0B8B0; }
-
-  /* Responsive */
   @media (max-width: 600px) {
     .header { padding: 2rem 1.25rem 2rem; }
     .main { padding: 1.5rem 1.25rem 3rem; }
     .tabs { width: 100%; overflow-x: auto; }
     .row { grid-template-columns: 62px 10px 1fr; }
+    .countdown-right { display: none; }
   }
 </style>
 </head>
@@ -316,94 +254,90 @@
 
 <div class="header">
   <div class="header-inner">
-    <p class="header-eyebrow">Personal system</p>
     <h1>Daily Schedule</h1>
-    <div class="header-meta">
-      <span class="meta-pill">Wake 09:00 AM</span>
-      <span class="meta-pill">Sleep 01:30 AM</span>
-      <span class="meta-pill">Study · Work · Health</span>
-    </div>
   </div>
 </div>
 
 <div class="main">
+
+  <div class="countdown-banner">
+    <div>
+      <div class="countdown-label">Days remaining</div>
+      <div class="countdown-num" id="daysLeft">—</div>
+    </div>
+    <div class="countdown-right">until Aug 15, 2026</div>
+  </div>
+
   <div class="tabs">
     <button class="tab active" onclick="showTab('weekday', this)">Mon – Fri</button>
-    <button class="tab" onclick="showTab('saturday', this)">Saturday</button>
-    <button class="tab" onclick="showTab('sunday', this)">Sunday</button>
+    <button class="tab" onclick="showTab('weekend', this)">Sat & Sun</button>
     <button class="tab" onclick="showTab('routines', this)">Routines</button>
     <button class="tab" onclick="showTab('track', this)">Track</button>
-
   </div>
 
   <div class="legend">
-    <div class="legend-item"><div class="dot dot-study"></div> Study</div>
+    <div class="legend-item"><div class="dot dot-study"></div> CS Study</div>
     <div class="legend-item"><div class="dot dot-health"></div> Health</div>
     <div class="legend-item"><div class="dot dot-routine"></div> Routine</div>
     <div class="legend-item"><div class="dot dot-work"></div> Work</div>
-    <div class="legend-item"><div class="dot dot-social"></div> Social</div>
+    <div class="legend-item"><div class="dot dot-brain"></div> Chess · Maths · Typing · German</div>
+    <div class="legend-item"><div class="dot dot-social"></div> Teach / Social</div>
     <div class="legend-item"><div class="dot dot-rest"></div> Rest / Other</div>
   </div>
 
-  <!-- MON–FRI -->
+  <!-- ═══════ MON–FRI ═══════ -->
   <div id="tab-weekday" class="schedule-block">
     <div class="section-label">Morning</div>
-    <div class="row"><div class="time">09:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Brush · Face wash · SPF 30 · B12 · Scalp oil <span class="badge b-health">Mon & Fri</span> · Lifpan-DSR <span class="badge b-health">M · W · F</span></div></div>
-    <div class="row"><div class="time">09:30 AM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Run + Finshots</div></div>
-    <div class="row"><div class="time">10:30 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Shower · Ash:ba conditioner</div></div>
-    <div class="row"><div class="time">11:00 AM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Brunch · Omega 3 · Haldi · Hair Ras (2) · Beard Gummy · Calcium + D3 · Minoxidil dose 1 · Posture corrector</div></div>
-    <div class="section-label">Afternoon — Study</div>
-    <div class="row"><div class="time">11:30 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">Study 6 hrs <span class="badge b-study">DSA · Java · Spring Boot · DevOps</span> · Arm squeezer at desk</div></div>
-    <div class="section-label">Evening</div>
-    <div class="row"><div class="time">05:30 PM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Typing practice + snack</div></div>
-    <div class="row"><div class="time">06:00 PM</div><div class="dot-col"><div class="dot dot-work"></div></div><div class="entry">Work session 1 · Chess & Duolingo in gaps</div></div>
+    <div class="row"><div class="time">09:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Banana · Brush · Face wash · SPF 30 · B12 · Scalp oil <span class="badge b-health">Mon & Fri</span> · Lifpan-DSR <span class="badge b-health">M · W · F</span></div></div>
+    <div class="row"><div class="time">09:30 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS Study  <span class="badge b-study">Block 1 · 2 hrs</span></div></div>
+
+    <div class="section-label">Late Morning</div>
+    <div class="row"><div class="time">11:30 AM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Breakfast · Omega-3 · Haldi · Traya Hair Ras ×2 · Beard Gummy · Calcium + D3 · Minoxidil dose 1 · Posture corrector on</div></div>
+    <div class="row"><div class="time">12:00 PM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS Study <span class="badge b-study">Block 2 · 2 hrs</span></div></div>
+
+    <div class="section-label">Afternoon</div>
+    <div class="row"><div class="time">02:00 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Chess + Protein</div></div>
+    <div class="row"><div class="time">02:30 PM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS Study <span class="badge b-study">Block 3 · 2 hrs</span></div></div>
+    <div class="row"><div class="time">04:30 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Typing practice</div></div>
+    <div class="row"><div class="time">05:00 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Maths <span class="badge b-brain">1 hr</span></div></div>
+
+    <div class="section-label">Evening — Work</div>
+    <div class="row"><div class="time">06:00 PM</div><div class="dot-col"><div class="dot dot-work"></div></div><div class="entry">Office meetings · Shower + Ashba conditioner <span class="badge b-health">Mon & Fri</span></div></div>
+    <div class="row"><div class="time">08:00 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Dinner · Traya Hair Ras ×2</div></div>
+    <div class="row"><div class="time">08:30 PM</div><div class="dot-col"><div class="dot dot-work"></div></div><div class="entry">Office work</div></div>
+
     <div class="section-label">Night</div>
-    <div class="row"><div class="time">09:00 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Dinner</div></div>
-    <div class="row"><div class="time">09:45 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Walk · Hair Ras (2)</div></div>
-    <div class="row"><div class="time">11:00 PM</div><div class="dot-col"><div class="dot dot-work"></div></div><div class="entry">Work session 2</div></div>
-    <div class="row"><div class="time">12:00 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">Varsity</div></div>
-    <div class="row"><div class="time">12:30 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Read a book</div></div>
-    <div class="row"><div class="time">01:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Night routine · Minoxidil dose 2 · Liv 52 · Lidium Plus · Skincare · Nail paint</div></div>
-    <div class="row"><div class="time">01:30 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Sleep</div></div>
+    <div class="row"><div class="time">10:30 PM</div><div class="dot-col"><div class="dot dot-social"></div></div><div class="entry">Teach CS</div></div>
+    <div class="row"><div class="time">11:00 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">German <span class="badge b-brain">1.5 hrs</span></div></div>
+    <div class="row"><div class="time">12:30 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Isometric stretches · Floss + face wash · Minoxidil dose 2 · Ashwagandha · Liv 52 · Lidium Plus · Skincare · Nail paint</div></div>
+    <div class="row"><div class="time">01:00 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Sleep</div></div>
   </div>
 
-  <!-- SATURDAY -->
-  <div id="tab-saturday" class="schedule-block hidden">
+  <!-- ═══════ SAT & SUN ═══════ -->
+  <div id="tab-weekend" class="schedule-block hidden">
     <div class="section-label">Morning</div>
-    <div class="row"><div class="time">09:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Brush · Face wash · SPF 30 · B12 </div></div>
-    <div class="row"><div class="time">09:30 AM</div><div class="dot-col"><div class="dot dot-social"></div></div><div class="entry">Book Club + Run (until 11:00 AM)</div></div>
-    <div class="row"><div class="time">11:00 AM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Brunch · Omega 3 · Haldi · Hair Ras (2) · Beard Gummy · Calcium + D3 · Minoxidil dose 1 · Posture corrector</div></div>
-    <div class="section-label">Afternoon — Study</div>
-    <div class="row"><div class="time">11:30 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">Study 4 hrs · Arm squeezer at desk</div></div>
-    <div class="row"><div class="time">03:30 PM</div><div class="dot-col"><div class="dot dot-social"></div></div><div class="entry">Toastmasters (until 07:00 PM)</div></div>
+    <div class="row"><div class="time">09:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Banana · Brush · Face wash · SPF 30 · B12 · Scalp oil <span class="badge b-health">Sat only</span></div></div>
+    <div class="row"><div class="time">09:30 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS Study <span class="badge b-study">Block 1 · 2 hrs</span></div></div>
+
+    <div class="section-label">Late Morning</div>
+    <div class="row"><div class="time">11:30 AM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Breakfast · Omega-3 · Haldi · Traya Hair Ras ×2 · Beard Gummy · Calcium + D3 · Minoxidil dose 1 · Posture corrector on</div></div>
+    <div class="row"><div class="time">12:00 PM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS Study <span class="badge b-study">Block 2 · 2 hrs</span></div></div>
+
+    <div class="section-label">Afternoon</div>
+    <div class="row"><div class="time">02:00 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Chess + Protein</div></div>
+    <div class="row"><div class="time">02:30 PM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS Study <span class="badge b-study">Block 3 · 2 hrs</span></div></div>
+    <div class="row"><div class="time">04:30 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Typing practice</div></div>
+    <div class="row"><div class="time">05:00 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Maths  <span class="badge b-brain">1 hr</span></div></div>
+
     <div class="section-label">Night</div>
-    <div class="row"><div class="time">09:00 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Dinner</div></div>
-    <div class="row"><div class="time">09:45 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Walk · Hair Ras (2)</div></div>
-    <div class="row"><div class="time">10:00 PM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">Study 2 hrs · Arm squeezer at desk</div></div>
-    <div class="row"><div class="time">12:00 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">Varsity</div></div>
-    <div class="row"><div class="time">12:30 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Read a book</div></div>
-    <div class="row"><div class="time">01:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Night routine · Minoxidil dose 2 · Liv 52 · Lidium Plus · Skincare · Nail paint</div></div>
-    <div class="row"><div class="time">01:30 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Sleep</div></div>
+    <div class="row"><div class="time">08:00 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Dinner · Traya Hair Ras ×2</div></div>
+    <div class="row"><div class="time">10:30 PM</div><div class="dot-col"><div class="dot dot-social"></div></div><div class="entry">Teach CS</div></div>
+    <div class="row"><div class="time">11:00 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">German <span class="badge b-brain">1.5 hrs</span></div></div>
+    <div class="row"><div class="time">12:30 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Isometric stretches · Floss + face wash · Minoxidil dose 2 · Ashwagandha · Liv 52 · Lidium Plus · Glyco Clear <span class="badge b-study">M · W · F</span> / Adapalene <span class="badge b-social">T · T · S</span> · Barrier cream · Nail paint · Face mask + Derma roll <span class="badge b-sun">Sun</span> · No Minoxidil <span class="badge b-sun">Sun</span></div></div>
+    <div class="row"><div class="time">01:00 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Sleep</div></div>
   </div>
 
-  <!-- SUNDAY -->
-  <div id="tab-sunday" class="schedule-block hidden">
-    <div class="section-label">Morning — Study</div>
-    <div class="row"><div class="time">09:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Brush · Face wash · SPF 30 · B12 </div></div>
-    <div class="row"><div class="time">09:30 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">Study 4 hrs · Arm squeezer at desk</div></div>
-    <div class="section-label">Afternoon — Social</div>
-    <div class="row"><div class="time">01:30 PM</div><div class="dot-col"><div class="dot dot-social"></div></div><div class="entry">Hang out with friends</div></div>
-    <div class="section-label">Night</div>
-    <div class="row"><div class="time">09:00 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Dinner</div></div>
-    <div class="row"><div class="time">09:45 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Walk · Hair Ras (2)</div></div>
-    <div class="row"><div class="time">10:00 PM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">Study 2 hrs · Arm squeezer at desk</div></div>
-    <div class="row"><div class="time">12:00 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">Varsity</div></div>
-    <div class="row"><div class="time">12:30 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Read a book</div></div>
-    <div class="row"><div class="time">01:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Sunday night routine · Face mask · Derma roll · No Minoxidil · Barrier cream · Nail paint</div></div>
-    <div class="row"><div class="time">01:30 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Sleep</div></div>
-  </div>
-
-  <!-- ROUTINES -->
+  <!-- ═══════ ROUTINES ═══════ -->
   <div id="tab-routines" class="hidden">
     <div class="cards-grid">
 
@@ -413,19 +347,20 @@
           <div class="card-subtitle">09:00 AM · every day</div>
         </div>
         <div class="steps">
-          <div class="step"><div class="step-num">1</div><div>Brush teeth</div></div>
-          <div class="step"><div class="step-num">2</div><div>Face wash</div></div>
-          <div class="step"><div class="step-num">3</div><div>SPF 30 day cream</div></div>
-          <div class="step"><div class="step-num">4</div><div>B12 </div></div>
-          <div class="step"><div class="step-num">5</div><div>Scalp oil <span class="badge b-health">Mon & Fri only</span></div></div>
-          <div class="step"><div class="step-num">6</div><div>Lifpan-DSR <span class="badge b-health">Mon · Wed · Fri only</span></div></div>
+          <div class="step"><div class="step-num">1</div><div>Banana</div></div>
+          <div class="step"><div class="step-num">2</div><div>Brush teeth</div></div>
+          <div class="step"><div class="step-num">3</div><div>Face wash</div></div>
+          <div class="step"><div class="step-num">4</div><div>SPF 30 day cream</div></div>
+          <div class="step"><div class="step-num">5</div><div>B12</div></div>
+          <div class="step"><div class="step-num">6</div><div>Scalp oil <span class="badge b-health">Mon & Fri only</span></div></div>
+          <div class="step"><div class="step-num">7</div><div>Lifpan-DSR <span class="badge b-health">Mon · Wed · Fri only</span></div></div>
         </div>
       </div>
 
       <div class="card">
         <div class="card-header">
-          <div class="card-title">Brunch block</div>
-          <div class="card-subtitle">11:00 AM · Mon – Sat</div>
+          <div class="card-title">Breakfast block</div>
+          <div class="card-subtitle">11:30 AM · every day</div>
         </div>
         <div class="pills-block">
           <div class="pill-group">
@@ -439,8 +374,8 @@
           <div class="pill-group">
             <div class="pill-label">Hair</div>
             <div class="pill-row">
-              <div class="pill">Traya Hair Ras × 2</div>
-              <div class="pill">Beard Gummy × 1</div>
+              <div class="pill">Traya Hair Ras ×2</div>
+              <div class="pill">Beard Gummy ×1</div>
             </div>
           </div>
           <div class="pill-group">
@@ -455,12 +390,23 @@
 
       <div class="card">
         <div class="card-header">
-          <div class="card-title">After walk</div>
-          <div class="card-subtitle">09:45 PM · every day</div>
+          <div class="card-title">Shower — Ashba days</div>
+          <div class="card-subtitle">During office meetings · Mon & Fri · Sat</div>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div>Rinse out scalp oil (applied at 9 AM — ~9 hrs sit time)</div></div>
+          <div class="step"><div class="step-num">2</div><div>Ashba conditioner — leave in, rinse</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Dinner block</div>
+          <div class="card-subtitle">08:00 PM · every day</div>
         </div>
         <div class="pills-block">
           <div class="pill-row">
-            <div class="pill">Hair Ras × 2</div>
+            <div class="pill">Traya Hair Ras ×2</div>
           </div>
         </div>
       </div>
@@ -468,109 +414,125 @@
       <div class="card">
         <div class="card-header">
           <div class="card-title">Night routine</div>
-          <div class="card-subtitle">01:00 AM · Mon – Sat · ~30 min</div>
+          <div class="card-subtitle">12:30 AM · Mon – Sat · ~30 min</div>
         </div>
         <div class="steps">
-          <div class="step"><div class="step-num">1</div><div>Floss + face wash — Cureskin Gentle Cleanse</div></div>
-          <div class="step"><div class="step-num">2</div><div>Scalp — Traya Recap Hair Serum (1 ml to roots)</div></div>
-          <div class="step"><div class="step-num">3</div><div>Tablets — Liv 52 · Lidium Plus (½ tab) </div></div>
-          <div class="step"><div class="step-num">4</div><div>Beard — Minoxidil dose 2 to clean, dry jaw</div></div>
-          <div class="step"><div class="step-num">5</div><div>Nasal — Resflu (Fluticasone) spray</div></div>
-          <div class="step"><div class="step-num">6</div><div>Skincare — Glyco Clear <span class="badge b-study">M · W · F</span> or Adapalene <span class="badge b-social">T · T · S</span></div></div>
-          <div class="step"><div class="step-num">7</div><div>Seal — Barrier Restructure Cream + Anti-bite Nail Paint</div></div>
+          <div class="step"><div class="step-num">1</div><div>Mild isometric stretches</div></div>
+          <div class="step"><div class="step-num">2</div><div>Floss + face wash — Cureskin Gentle Cleanse</div></div>
+          <div class="step"><div class="step-num">3</div><div>Scalp — Traya Recap Hair Serum (1 ml to roots)</div></div>
+          <div class="step"><div class="step-num">4</div><div>Ashwagandha</div></div>
+          <div class="step"><div class="step-num">5</div><div>Liv 52 · Lidium Plus (½ tab)</div></div>
+          <div class="step"><div class="step-num">6</div><div>Beard — Minoxidil dose 2 to clean, dry jaw</div></div>
+          <div class="step"><div class="step-num">7</div><div>Nasal — Resflu (Fluticasone) spray</div></div>
+          <div class="step"><div class="step-num">8</div><div>Skincare — Glyco Clear <span class="badge b-study">M · W · F</span> or Adapalene <span class="badge b-social">T · T · S</span></div></div>
+          <div class="step"><div class="step-num">9</div><div>Barrier Restructure Cream + Anti-bite Nail Paint</div></div>
         </div>
       </div>
 
       <div class="card">
         <div class="card-header">
           <div class="card-title">Sunday night routine</div>
-          <div class="card-subtitle">01:00 AM · Sunday exception</div>
+          <div class="card-subtitle">12:30 AM · Sunday exception</div>
         </div>
         <div class="steps">
-          <div class="step"><div class="step-num">1</div><div>Floss + face wash</div></div>
-          <div class="step"><div class="step-num">2</div><div>Apply face mask</div></div>
-          <div class="step"><div class="step-num">3</div><div>Derma roller — clean with alcohol before & after</div></div>
-          <div class="step"><div class="step-num">4</div><div>Skip Minoxidil — avoids irritation post-roll</div></div>
-          <div class="step"><div class="step-num">5</div><div>Barrier Restructure Cream + Nail Paint</div></div>
+          <div class="step"><div class="step-num">1</div><div>Mild isometric stretches</div></div>
+          <div class="step"><div class="step-num">2</div><div>Floss + face wash</div></div>
+          <div class="step"><div class="step-num">3</div><div>Apply face mask</div></div>
+          <div class="step"><div class="step-num">4</div><div>Derma roller — clean with alcohol before & after</div></div>
+          <div class="step"><div class="step-num">5</div><div>Skip Minoxidil — avoids irritation post-roll</div></div>
+          <div class="step"><div class="step-num">6</div><div>Ashwagandha · Liv 52 · Lidium Plus (½ tab)</div></div>
+          <div class="step"><div class="step-num">7</div><div>Barrier Restructure Cream + Nail Paint</div></div>
         </div>
       </div>
 
       <div class="card">
         <div class="card-header">
-          <div class="card-title">Habit reminders</div>
+          <div class="card-title">Habit anchors</div>
         </div>
         <div class="steps">
-          <div class="step"><div class="step-num">—</div><div>Arm squeezer stays on the desk during all study blocks</div></div>
-          <div class="step"><div class="step-num">—</div><div>Chess & Duolingo only during the 6 PM – 9 PM light-work window</div></div>
-          <div class="step"><div class="step-num">—</div><div>Nail paint applied at 1 AM so it lasts the full next day</div></div>
-          <div class="step"><div class="step-num">—</div><div>Study goal: DSA · Java · Spring Boot · DevOps — late 2027 move</div></div>
+          <div class="step"><div class="step-num">—</div><div>Arm squeezer on the desk during all CS study blocks</div></div>
+          <div class="step"><div class="step-num">—</div><div>Chess + paneer only in the 2:00–2:30 PM slot</div></div>
+          <div class="step"><div class="step-num">—</div><div>Nail paint at 12:30 AM so it sets fully overnight</div></div>
+          <div class="step"><div class="step-num">—</div><div>Schedule locked till Aug 15 — no discretionary changes</div></div>
         </div>
       </div>
 
     </div>
   </div>
 
-    <!-- Track -->
+  <!-- ═══════ TRACK ═══════ -->
   <div id="tab-track" class="schedule-block hidden">
     <div class="section-label">Habits</div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry"> Wake at 9:00 AM </div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Morning Routine </div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Running + Shower </div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-social"></div></div><div class="entry"> Study 6hr + Grip </div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry"> Type/Toast/Badminton </div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry"> Protein + Duo Chess </div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry"> 4 bottle water </div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> No nail biting </div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> No eye rubbing </div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Varsity + Read </div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry"> Night Routine </div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry"> Sleep 7+ hours</div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Wake at 9:00 AM</div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Morning routine </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS 1 </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Breakfast + supplements</div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS 2 </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Chess + paneer</div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS 3 </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Typing practice</div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Maths </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">4 bottles water</div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">No nail biting</div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">No eye rubbing</div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">German </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Night routine </div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Sleep by 1:00 AM</div></div>
     <div style="margin-top: 20px; text-align: right;">
-      <button class="track-submit" onclick="handleSubmit()">Submit</button>
+      <button class="track-submit" onclick="handleSubmit()">Submit day</button>
     </div>
   </div>
+
 </div>
+
 <form id="hiddenForm" method="POST" target="hiddenFrame"
       action="https://script.google.com/macros/s/AKfycbwC0bTMUhjiPBHsLwaoJAqP49EIc0Th7Lg880BH-IWTmNDmKEtu10AgcICiRj0RUxw8/exec">
   <input type="hidden" name="payload" id="payloadInput">
 </form>
-
 <iframe name="hiddenFrame" style="display:none;"></iframe>
 
-
 <script>
-function showTab(name, el) {
-  ['weekday','saturday','sunday','routines','track'].forEach(t => {
-    document.getElementById('tab-' + t).classList.add('hidden');
-  });
-  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.remove('hidden');
-  el.classList.add('active');
-}
-function handleSubmit() {
-  const checks = document.querySelectorAll('#tab-track .track-check');
+  function showTab(name, el) {
+    ['weekday','weekend','routines','track'].forEach(t => {
+      document.getElementById('tab-' + t).classList.add('hidden');
+    });
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.remove('hidden');
+    el.classList.add('active');
+  }
 
-  const habits = [];
-  checks.forEach(c => habits.push(c.checked ? 1 : 0));
+  (function() {
+    const target = new Date('2026-08-15T00:00:00');
+    const now = new Date();
+    const diffMs = target - now;
+    const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+    const el = document.getElementById('daysLeft');
+    const sub = document.getElementById('countdownSub');
+    if (diffDays > 0) {
+      el.textContent = diffDays;
+      sub.textContent = 'days remaining until Aug 15, 2026';
+    } else if (diffDays === 0) {
+      el.textContent = 'Today';
+      sub.textContent = 'This is the day.';
+    } else {
+      el.textContent = '0';
+      sub.textContent = 'Aug 15, 2026 has passed.';
+    }
+  })();
 
-  const today = new Date();
-  const day = today.getDate();
-  const month = today.toLocaleDateString('en-GB', { month: 'short' });
-  const weekday = today.toLocaleDateString('en-GB', { weekday: 'short' });
-  const formattedDate = `${day} ${month}, ${weekday}`;
-
-  const payload = {
-    date: formattedDate,
-    habits: habits
-  };
-
-  document.getElementById("payloadInput").value = JSON.stringify(payload);
-  document.getElementById("hiddenForm").submit();
-
-  alert("Submitted ✓");
-}
-
-
+  function handleSubmit() {
+    const checks = document.querySelectorAll('#tab-track .track-check');
+    const habits = [];
+    checks.forEach(c => habits.push(c.checked ? 1 : 0));
+    const today = new Date();
+    const payload = {
+      date: `${today.getDate()} ${today.toLocaleDateString('en-GB', { month: 'short' })}, ${today.toLocaleDateString('en-GB', { weekday: 'short' })}`,
+      habits: habits
+    };
+    document.getElementById('payloadInput').value = JSON.stringify(payload);
+    document.getElementById('hiddenForm').submit();
+    alert('Submitted ✓');
+  }
 </script>
 </body>
 </html>
