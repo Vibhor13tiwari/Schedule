@@ -11,21 +11,28 @@
     --surface: #FFFFFF;
     --border: #E8E4DC;
     --text: #1A1814;
-    --muted: #8C8780;
+    --muted: #8C8780;  
+    /* CS Study - Blue */
     --study:  #1B4A7A;
     --study-light: #E8F0F9;
+    /* Social/Teach - Purple */
     --social: #5B3DA8;
-    --social-light: #EEE9FA;
-    --work:   #8B4A00;
-    --work-light: #FBF0E3;
-    --routine:#8B1A3A;
-    --routine-light:#FAE8EE;
-    --health: #1A6B3A;
-    --health-light:#E3F5EC;
+    --social-light: #EEE9FA;   
+    /* Work - Brown/Orange */
+    --work:   #DBA800;
+    --work-light: #FBF0E3;  
+    /* Morning/Night Routines - Dark Green */
+    --routine:#166534;
+    --routine-light:#DCFCE7;  
+    /* Meals/Health - Vibrant Green */
+    --health: #166534;
+    --health-light:#DCFCE7;
+    /* Rest - Grey */
     --rest:   #4A4540;
     --rest-light: #F0EDEA;
-    --brain:  #7A5C1E;
-    --brain-light: #F5EDD9;
+    /* Brain (Chess, Math, German, Typing) - Red */
+    --brain:  #991B1B;
+    --brain-light: #FEE2E2;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -109,8 +116,7 @@
   .legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 2rem;
+    gap: 18px;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--border);
   }
@@ -276,13 +282,11 @@
   </div>
 
   <div class="legend">
-    <div class="legend-item"><div class="dot dot-study"></div> CS Study</div>
-    <div class="legend-item"><div class="dot dot-health"></div> Health</div>
-    <div class="legend-item"><div class="dot dot-routine"></div> Routine</div>
-    <div class="legend-item"><div class="dot dot-work"></div> Work</div>
-    <div class="legend-item"><div class="dot dot-brain"></div> Chess · Maths · Typing · German</div>
-    <div class="legend-item"><div class="dot dot-social"></div> Teach / Social</div>
-    <div class="legend-item"><div class="dot dot-rest"></div> Rest / Other</div>
+    <div class="legend-item"><div class="dot dot-study"></div> CS Study  </div>
+    <div class="legend-item"><div class="dot dot-health"></div> Health  </div>
+    <div class="legend-item"><div class="dot dot-work"></div> Work  </div>
+    <div class="legend-item"><div class="dot dot-brain"></div> Brain  </div>
+    <div class="legend-item"><div class="dot dot-social"></div> Social  </div>
   </div>
 
   <!-- ═══════ MON–FRI ═══════ -->
@@ -298,11 +302,11 @@
     <div class="section-label">Afternoon</div>
     <div class="row"><div class="time">02:00 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Chess + Protein</div></div>
     <div class="row"><div class="time">02:30 PM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS Study <span class="badge b-study">Block 3 · 2 hrs</span></div></div>
-    <div class="row"><div class="time">04:30 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Typing practice</div></div>
+    <div class="row"><div class="time">04:30 PM</div><div class="dot-col"><div class="dot dot-work"></div></div><div class="entry">Typing practice</div></div>
     <div class="row"><div class="time">05:00 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Maths <span class="badge b-brain">1 hr</span></div></div>
 
     <div class="section-label">Evening — Work</div>
-    <div class="row"><div class="time">06:00 PM</div><div class="dot-col"><div class="dot dot-work"></div></div><div class="entry">Office meetings · Shower + Ashba conditioner <span class="badge b-health">Mon & Fri</span></div></div>
+    <div class="row"><div class="time">06:00 PM</div><div class="dot-col"><div class="dot dot-work"></div></div><div class="entry"> Meetings · Shower + Ashba <span class="badge b-health">Mon & Fri</span></div></div>
     <div class="row"><div class="time">08:00 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Dinner · Traya Hair Ras ×2</div></div>
     <div class="row"><div class="time">08:30 PM</div><div class="dot-col"><div class="dot dot-work"></div></div><div class="entry">Office work</div></div>
 
@@ -316,7 +320,7 @@
   <!-- ═══════ SAT & SUN ═══════ -->
   <div id="tab-weekend" class="schedule-block hidden">
     <div class="section-label">Morning</div>
-    <div class="row"><div class="time">09:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Banana · Brush · Face wash · SPF 30 · B12 · Scalp oil <span class="badge b-health">Sat only</span></div></div>
+    <div class="row"><div class="time">09:00 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Banana · Brush · Face wash · SPF 30 · B12 </div></div>
     <div class="row"><div class="time">09:30 AM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS Study <span class="badge b-study">Block 1 · 2 hrs</span></div></div>
 
     <div class="section-label">Late Morning</div>
@@ -326,12 +330,11 @@
     <div class="section-label">Afternoon</div>
     <div class="row"><div class="time">02:00 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Chess + Protein</div></div>
     <div class="row"><div class="time">02:30 PM</div><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">CS Study <span class="badge b-study">Block 3 · 2 hrs</span></div></div>
-    <div class="row"><div class="time">04:30 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Typing practice</div></div>
+    <div class="row"><div class="time">04:30 PM</div><div class="dot-col"><div class="dot dot-work"></div></div><div class="entry">Typing practice</div></div>
     <div class="row"><div class="time">05:00 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Maths  <span class="badge b-brain">1 hr</span></div></div>
 
     <div class="section-label">Night</div>
-    <div class="row"><div class="time">08:00 PM</div><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">Dinner · Traya Hair Ras ×2</div></div>
-    <div class="row"><div class="time">10:30 PM</div><div class="dot-col"><div class="dot dot-social"></div></div><div class="entry">Teach CS</div></div>
+    <div class="row"><div class="time">06:00 PM</div><div class="dot-col"><div class="dot dot-social"></div></div><div class="entry">Chill</div></div>
     <div class="row"><div class="time">11:00 PM</div><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">German <span class="badge b-brain">1.5 hrs</span></div></div>
     <div class="row"><div class="time">12:30 AM</div><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Isometric stretches · Floss + face wash · Minoxidil dose 2 · Ashwagandha · Liv 52 · Lidium Plus · Glyco Clear <span class="badge b-study">M · W · F</span> / Adapalene <span class="badge b-social">T · T · S</span> · Barrier cream · Nail paint · Face mask + Derma roll <span class="badge b-sun">Sun</span> · No Minoxidil <span class="badge b-sun">Sun</span></div></div>
     <div class="row"><div class="time">01:00 AM</div><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Sleep</div></div>
@@ -473,8 +476,8 @@
     <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Typing practice</div></div>
     <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">Maths </div></div>
     <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-health"></div></div><div class="entry">4 bottles water</div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">No nail biting</div></div>
-    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-study"></div></div><div class="entry">No eye rubbing</div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-work"></div></div><div class="entry">No nail biting</div></div>
+    <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-work"></div></div><div class="entry">No eye rubbing</div></div>
     <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-brain"></div></div><div class="entry">German </div></div>
     <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-routine"></div></div><div class="entry">Night routine </div></div>
     <div class="row"><input type="checkbox" class="track-check"><div class="dot-col"><div class="dot dot-rest"></div></div><div class="entry">Sleep by 1:00 AM</div></div>
